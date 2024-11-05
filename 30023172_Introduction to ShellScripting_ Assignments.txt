@@ -1,0 +1,40 @@
+Shell scripting asssignment
+
+
+1. Create a script named “myscript” in current directory to do the following.
+
+a) display “hello user”
+
+b) list files in current directory
+
+c) name of logged in user
+
+d) date
+
+2. Add execute permission and Run the script from
+
+a) current directory
+
+3. Create a subdirectory named “test”
+
+4. Change to “test” directory. Run the script “myscript” [Hint: You will have to update PATH to include the directory containg script to run script from 
+any location].
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Creating a script named as myscript
+  ex: vi myscript
+
+1.a) echo "hello user"
+1.b) ls
+1.c) whoami   
+     [ex: user57]
+1.d)date
+
+2.a) chmod a+x myscript
+
+3. mkdir test
+
+4. cd test
+   export PATH="$PATH:.."
+   myscript
