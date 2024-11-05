@@ -6,13 +6,14 @@ To know the current working directory we can use  pwd command.
 
 By using  ls  or ll command.
 
-         3. Identify the commands with inputs to do the following
+3. Identify the commands with inputs to do the following
 a. create a directory d1
 b. create a subdirectory d2 in d1
 c. change to directory d2
 d. create an empty file “f1.txt”
 e. display the contents of “f1.txt”
 f. view the contents of d1 from current directory d2
+
 Ans:    $ mkdir d1
 $ cd d1
 /d1$ mkdir d2
@@ -30,6 +31,7 @@ d2
 4. Use the ls command with its options. How will you identify directories from the listing?
        ls -l       [ All detailed information about each item in directory ]
        ls -d */    [ Only directories can be displayed with a trailing  / ]
+
 5. Use ls to do the following
 a. List files with single character names.
 b. List hidden files also. [ Note : Hidden files are files having name started with a “.” ]
@@ -57,7 +59,7 @@ c. Create a subdirectory in new in named“new1”.
 d. Write a command to copy selectively only tb2.1, tb6.1, tb7.1 and tb10.1 in the directory new1.
 e. Write a command to copy the entire directory “new” to a directory “newprogs”. [Note : use the –R option of “cp” command ]
 Ans:  a) cp tb1.1 testdir
-            b) mkdir new
+      b) mkdir new
    cp tb1.1 new
   ~/testdir/new$ touch tb2.1 tb3.1 tb4.1 tb5.1 tb6.1 tb7.1 tb8.1tb9.1 tb10.1
   c) mkdir new1
@@ -66,7 +68,7 @@ Ans:  a) cp tb1.1 testdir
       cp -r new newprogs
 
 11. Find out the difference between
-a. ]“mv” & “cp”
+a. “mv” & “cp”
 b. “rm”, “rmdir”
 c. “mkdir” and “mkdir -p”
 Ans:  a) mv – move the file from one directory to another.
