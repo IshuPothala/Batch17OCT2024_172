@@ -25,7 +25,7 @@ d) Display all o/p and error and also redirect both stdout and stderr to an o/p 
 ----------------------------------------------------------------------------------------------------
 
 1.  creating a script named as myscript
-       ex: myscript
+       ex: vi myscript
 
 1.a) mkdir subd1
 1.b) ls > dircontent
