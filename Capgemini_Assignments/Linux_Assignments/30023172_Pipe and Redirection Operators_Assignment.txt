@@ -1,0 +1,45 @@
+1. Create a script named “myscript” in current directory to do the following.
+
+a) create a dir named “subd1” in current directory
+
+b) create a file named “dircontent” with contents of the current directory
+
+c) display the contents of the file “dircontent”
+
+d) display the contents of a non existing file named “unknownfile”
+
+2. Run the script and validate the output in following cases
+
+a) Redirect only the stdout to an o/p file named stdout.txt
+
+b) Redirect only the stderr to an o/p file named stderr.txt
+
+c) Redirect both stdout and stderr to an o/p file named stdall.txt
+
+d) Display all o/p and error and also redirect both stdout and stderr to an o/p file named stdall.txt
+
+
+3. Redirect the output of command below using pipe (|) to wc and get the output .
+     ls-l
+
+----------------------------------------------------------------------------------------------------
+
+1.  creating a script named as myscript
+       ex: myscript
+
+1.a) mkdir subd1
+1.b) ls > dircontent
+1.c) cat dircontent
+1.d) cat unknownfile
+
+2.a) ./myscript > stdout.txt 2
+2.b)./myscript 2> stderr.txt
+2.c)./myscript > stdall.txt > stdout.txt > stderr.txt
+2.d)./myscript | tee stdall.txt
+
+--> Here tee used for taking the output from command and writes it to both screen and a file.
+
+3) ls -l | wc
+
+ls-l is used  for listing details of files and directories
+wc is used for count the lines, words, characters
