@@ -1,0 +1,142 @@
+#include <stdio.h>
+  2 #include <string.h>
+  3
+  4 int main()
+  5 {
+  6
+  7    int c1,c2,c3;
+  8    char res[40]={'\0',};
+  9    char temp[10]={"\0"};
+ 10   // char temp1[]={'2'};
+ 11
+ 12    char temp1[5];//={'2'};
+ 13    printf("\nSize of temp1=%d value=%s",sizeof(temp1),temp1);
+ 14    c1=2;
+ 15    c2=1;
+ 16    c3=0;
+ 17    temp1[0]= 2+'0';
+ 18    temp1[1]=1+'0';
+ 19    temp1[2]='\0';
+ 20    printf("\n strlen =%d",strlen(temp1));
+ 21    printf("\n %c,%c",temp1[0],temp1[1]);
+ 22    //2  8 1 =2
+ 23    //c1 * c2 = c3
+ 24    while(c2<11)
+ 25    {
+ 26    c3=c1*c2;
+ 27    sprintf(temp,"%d x %d = %d ",c1,c2,c3);
+ 28
+ 29    strcpy(res,temp);
+ 30    printf("\nres=%s\n",res);
+ 31    c2++;
+ 32    }
+ 33    return 0;
+ 34    }
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+char arr[50]={"Amit","kumar","ravi"};
+
+ptr=s1;
+pf("\n%c",*ptr);
+ptr++;
+
+int i=0;
+for(i=0;i<strlen(s1);i++)
+{
+
+  if(*ptr==',')
+
+      break;
+   ptr++;
+}
+
+index value of ptr after breaking the loop is n=4 and addresss of ptr = 2004
+
+ptr++;
+for (i=0;ptr!=NULL;i++,ptr++)
+{
+   if(*ptr==',')
+     break;
+}
+
+ptr is pointing to 2010 after completing the loop
+
+ptr++;
+
+for(;ptr!=NULL;ptr++)
+{
+  if (*ptr==',')
+   break;
+}
+
+----------------------------------------------------------------------------------------------------------------------
+strtok has its own address
+
+strtok(Lines,'|')
+
+
+structures using strings with strtok
+
+/*struct tagName1{
+      mem/properties
+   struct tagName2{
+}
+};
+*/
+
+name of the variable, name of the member
+
+If we need to assign string use strcpy
+
+If it is single char we can use assignment operators.
+
+---------------------------------------------------------------------------------------------
+check wheather unit test cases are executed or not.
+
+dynamic memory aalocation----->at run time we can allocate the data
+
+for dynamic memory allocation we use pointer which used to points the address;
+
+always we need to assign to NULL
+
+In normal pointers we can't use &
+
+but in structures we can use & to send base address for the members of structure.
+
+EMP e1; ==> e1 is a named address which address allocated by compiler;
+For unnamed address => it dynamically allocates the memory;
+
+when we use generic pointer we can definetly use type casting;
+void *e1=NULL;
+
+
+EMP e1;
+EMP *e=NULL;
+e=&e1;
+scanf("%d%d%d",&e1.id)
+
+
+
+free(): invalid pointer
+Aborted (core dumped)
+
+--> we cannot burden by using passing the arrays in function arguments.
+
+                                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+

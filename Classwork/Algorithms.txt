@@ -1,0 +1,88 @@
+Algorithm:
+
+  process for preparing tea.
+
+set of instructions
+
+->clear & unambiguous   
+->well-defined inputs
+->well-defined outputs
+->Finite-ness (correct set of instructions)
+->Feasible
+->Language independent
+
+
+---> two analysis of an algorithm
+->prior analysis and post analysis
+
+space complexity = Auxilary space + input size.
+
+approaches of algorithm
+->top down approach
+->bottom up approach
+
+best time complexity
+worst time complexity
+Average time complexity
+
+a=b+w/2;
+
+
+O(1) : dscribes an algorithm always execute in the same time regardless of the size of the input data set.
+ex: push and pop operation for a stack
+
+
+O(N)an algorithm whose performance will grow linearly and direct proportion to the size of the input data set.
+ex:linear search with unsorted data
+
+O(N^2) performance is dierctly proportional to the square of the size of the input data set.
+ex:two dimensional array , loopings
+
+O(log N) The iterative halfing of data sets described in the binary search example produces a growth curve that peaks at the beginning and slowly flattens
+out as the size of the data sets increase.
+
+ex: binary search
+->an input data set contains 10 items takes one second to complete.
+->a data set contains 100 items it takes two seconds to complete.
+->a data set contains 1000 items it takes three seconds to complete.
+
+O(N log N)Logarithmic time
+ex: merge sort,quick sort
+
+upper bound -> worst case
+
+
+Pivot element
+Quick sort:
+
+Quick sort is a divide and conquer method
+
+lptr is checked with pivot for lesser than it.
+rptr is checked with pivot for greater values thn it.
+if any of the above conditions fails then we stop iteration/recursion
+
+when the left ptr and right ptr stops we swaps the values of ptrs respectively.
+
+3 5 8 1 2 9 4 7 6
+------------------
+    |       |   |
+    L       R   P 
+
+**********when lptr and rptr reach at the same position that position is swapped with pivot element.***************************************************
+
+after first iteration we get the pivot element sorted in its correct position.
+
+When the left pointer is crossing the rptr. if my pivot element is greater the left and right pointer elements.
+
+--> Check with the right and left pointer exchange.
+
+ex: Phone book cannot use the quick sort because it is unstable.
+
+In phonebook transfer to another files then we use merge sort.
+
+both insertion and merge sort used in phone book application
+
+//////////////////Develop a phonebook application using the sorting techniques.
+
+
+

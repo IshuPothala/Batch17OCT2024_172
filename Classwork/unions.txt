@@ -1,0 +1,145 @@
+Yaswanth kanishkar and balaguru swamy books for C
+
+Union as same like strutures but only difference is only one member can access at a time,
+
+Only the high bytes can be the total union structure size.
+
+ex: if we accessing the names then we access id....after that names will be overwritten by the id.
+
+union item
+{
+  int m;
+  float x;
+  char c;
+
+}
+
+-> size of the above structure is 4 bytes.
+
+Handshake signals are used to acknowledge wheather the client is there or not.
+
+ex: bandwidth issue for youtube and load balancing.
+
+invoke the youtube server from multiple servers, when we get the result to main stream by using crc'it collect serially.
+
+Enumerations:
+
+The integers and numbers make as names
+
+for 10 and it is a whole number, a name can be given.
+
+The general form of enumeration is
+
+enum enum-type-name{enumeration list}variable_list;
+
+enum coin{penny,nickel,dime,quarter,dollar};
+enum is start with 0;
+
+enumeration datatypes used for error handling
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Files
+
+ A collection of logical related related information
+An employee name with employee anmes, desg, salary.
+A product file containing product name,make,batch,price etc..
+start and end of the file indicators
+we are accessing files by using special pointers
+
+
+FILE -> name of this datastructure
+
+The simplicity of file i/o in c files it treats asa s file of stream
+
+This structure to which the file pointer to, is of type FILE, defined in the header file <stdio.h>
+
+ex:
+     FILE *fp;
+
+     FILE *fopen(char *name,char *mode);
+
+     fp = fopen("file name","mode");
+
+----> read, write and append mode
+append-> after opening cursor will be blinking at end of the file
+
+when we open the file it will give u the address of the particular file.
+
+if fp is became NULL we cannot open the file.
+
+seek -> is used to move to one place to another
+
+
+
+fputs -> int fputs(const char*s, FILE *stream);
+
+fgets -> reads the next charcter from stream and returns it as an unsigned char cast to int or EOF end of file
+
+
+Assignment- Read the contents from the data base the record pf the employees
+101|Amit Kumar1|M|98985|100000
+102|Amit Kumar2|M|98986|100000
+103|Amit Kumar3|M|98987|100000
+104|Amit Kumar4|M|98985|100000
+105|Amit Kumar5|M|98985|100000
+
+reading the file and stored in a structure and display the contents
+
+while reading last content remove newline
+
+gcc -o ./bin/app -I ./inc ./src/main.c ./src/emp.c
+
+./bin/app
+
+make -f ./scripts/Makefile
+
+make file:
+
+CC=gcc
+cflags=-g -c
+oflags=-o
+OBJ=./obj
+SRC=./src
+INC=./inc
+BIN=./bin
+iflags=-I$(INC)/
+$(BIN)/app: $(OBJ)/main.o $(OBJ)/emp.o
+
+  $(cc) $(oflags) $(BIN)/app $(OBJ)/main.o $(OBJ)/emp.o
+
+$(OBJ)/main.o: $(SRC)/main.c
+
+  $(CC) $(cflags) $(iflags) $(oflags) $(OBJ)/ $(SRC)/main.c
+
+$(OBJ)/emp.o:
+
+
+NOTE: dynamically allocating the memory based on number of employees.
+
+NOTE: BY using system we cannot execute the system libaries only certain things should be executed
+execute the command through program.
+
+
+----------------------------------------------------------------------------
+
+ftell - is used to know the  file pointer position
+fseek - int fseek(FILE *stream, long offset, int whence);
+
+whence- SEEK_SET or SEEK_END;
+SEEK_END we can get the filesize also.
+SEEK_CUR
+depends on the offset value we can move forward or backward
+fseek(fp,12,SEEK_CUR);
+fseek(fp,-11,SEEK_CUR);
+rewind :
+    fseek(stream, 0l,SEEK_SET);
+
+
+fread(void *ptr,size_t size, size_t nmemb, FILE *stream);
+
+how many bytes read given by size_t
+
+same like as fwrite
+
+if fread and fwrite were filed return 0

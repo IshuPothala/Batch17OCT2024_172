@@ -1,0 +1,41 @@
+                                             STACKS
+
+
+->LIFO (Last in first out)  
+
+|      |
+|      |
+|      | 
+|      |
+|______|
+
+
+the stack will grows from bottom to top.
+
+ when bottom equals to top then stack is empty.
+
+when top reaches to limit then stack is full.
+
+container of stack will size fixed/max fix, and we need to declare the bottom.
+
+Inserting of a element 
+condition: wheather the stack is full or not.
+Deleting an element - remove/pop/pull
+condition: stack is empty or not.
+pop out one by one and then only bottom will be removed.
+
+gcc -o ./bin/app -I ././main.c./stack_v01.c
+
+
+how to avoid multiple definitions of variables in multiple files
+
+pragma once
+
+global variables can declared in header files but it is giving error like above.
+
+
+int *arr = NULL , *temp=NULL;
+
+arr = (int *)malloc(MAX*sizeof(int));
+
+temp=NULL;

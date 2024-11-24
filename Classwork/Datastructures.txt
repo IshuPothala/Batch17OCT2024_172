@@ -1,0 +1,90 @@
+struct home{
+   int val;
+
+struct *ptr;
+}HOME;
+
+HOME h1; 
+HOME h2;         //////  Creating Nodes
+HOME h3;
+
+h1.val=10;
+h2.val=20;
+h3.val=30;
+                   ///////////////initialize/insert/assign/setting nodes
+h1.ptr=NULL;
+h2.ptr=NULL;
+h3.ptr=NULL;                 |
+
+///////Creating another pointer as ptr1
+
+h1.ptr=&h2;
+h2.ptr=&h3;      /////////////making relationship
+
+
+
+
+
+when a member of a structure is a pointer which is pointing to itself is called self referential pointer.
+
+Is used for navigating to each structure.
+
+
+ex:
+
+struct home1
+{
+  int a;
+   struct home2 *ptr;
+};
+
+struct home
+{
+  float b;
+};
+
+
+
+
+if the list itself is not present then we need to append to the list then the appending node itself is a first node to the list.
+
+
+for appending we need two parameters they are base address of first node and the new node created 
+
+
+NODE *nn =NULL;
+
+unnamed addresses will be assigned to nn
+
+
+while deleting the head node wheather it is beginning and end of the last nodes both we need to consider.
+
+-> free the each node memory.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                         DOUBLY LINKED LIST
+
+
+initialize the structure with value and two pointers
+
+typedef struct node
+{
+   int val;
+ struct node *next;
+  struct node *prev;
+}NODE;
+
+// initializing the values
+
+// making relationship
+//traverse
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                   ----------------------                                                
+                                                  | CIRCULAR LINKED LIST |
+                                                  -----------------------
+
+
+-->count the number of nodes in a linked list?

@@ -1,0 +1,445 @@
+Pointer notation have index value but pointer expressions doesn't have index value.
+
+for calloc:
+char *ptr;
+
+
+-->When we try to free the memory twice then it gets like
+double free detected
+core dumped
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int *ptr;
+    ptr=malloc(3*sizeof(int));
+    free(ptr);
+    free(ptr);
+    return 0;
+}
+output:free(): double free detected in tcache 2
+Aborted
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                           STRINGS
+
+String is a collection of characters ended up with NULL.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    //char a='D';
+    int i;
+    char Name[5]={'I','S','H','U'};
+    int arr[5]={1,2,3,4,5};
+    for(i=0;i<5;i++)
+       printf("%d \n",arr[i]);
+    for(i=0;i<5;i++)
+       printf("%c \n",Name[i]);
+    char N[6]={'I','S','H','U','\0'};
+    char Namee[6]="Ishu";
+    char Greet[]="Hello";
+    printf("%s",Namee) ;
+    printf("%s\n",Greet) ;
+    
+    char str1[21];
+    char[][20]={"ishu","nani","chinnu","sasi","bhanu","junnu");
+   // There are 10 names each of max capacity of 50 chars
+    char Names[10][50];
+    
+    
+    return 0;
+}
+
+
+when the capacity of array is less than scanned and print the array contents then we get stack smashing
+
+strcpy(empty_str,full_str);
+it copy the only contents but not the null character.
+That will added by strcpy
+Ex:char *(char* dest,const *char source);
+
+
+
+strcnpy(dest,source);
+within n there is no null then destination will be null-terminated.
+
+strlen -> int strlen(obj);
+
+
+strcat- string concatenation,strncat
+
+char *strcat(char *dest,const char *src);
+
+for concatenation the destination storage capacity is more than source
+
+for example: source have 5 bytes then destination need to 11 bytes
+
+
+strcmp- Stringcompare
+
+char *strcmp(const char *str1,const char *str2);
+
+strncmp
+
+      str1    str2
+ex: bhima    bhina
+str1>str2
+str1<str2
+comparing based on ascii values of characters
+result will be <0 ,==0, >0
+
+ex: if(strcmp(s1,s2)==0)
+
+if(strcmp(e1.fname,"ishu")==0) && (strcmp(e1.lname,"pothala")==0)
+
+if((exp1)&&(exp2))
+
+if ((e1.id == 101)&&(strcmp(e1.lname,"abcd")==0);
+
+
+-->memset - when we are handling with structures, for initialising the structures we use memset 
+and also we use memcpy
+
+->strchr - first occurence of the character
+->strrchr - last occurenceof the character
+->strstr - first occurence of the substring
+
+
+->strcat(s1,s2) => s1 is appended to s2
+
+
+
+
+
+
+
+->strsep
+->strerror
+***********->strtok - tokenisation of the string.
+if delimiter can abrupts then we use strtok
+delimiter likes ',' ,"\n"," space ".
+strtok pointing while check with the starting and ending  pointer and check with delimiter
+
+//printf("\nptr = %s",*ptr);
+     printf("\nptr = %s",ptr);
+for comparing the strings then we need to give base address to print the contents of a ptr or string
+
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main() {
+    
+    char s1[20],s2[20];
+    char d1[40],d2[40];
+    char *ptr=NULL;
+    
+    int ret=0;
+    scanf("%s%s",s1,s2);
+    printf("\ns1=%s\ts2=%s",s1,s2);
+    //ptr=(char *)malloc(strlen(s1)+1);
+    //if we even doesn't allocate the memory to the pointer it can able to point
+    //
+    /*
+    ret = strcmp(s1,s2);
+    printf("\nret_val is: %d",ret);
+    printf("\n\n");
+     */
+     //already d2 and d1 can have its own addresses so it cam't use as pointer 
+     ptr= strcpy(d1,s1);
+     printf("\nd1=%s",d1);
+     //printf("\nptr = %s",*ptr);
+     printf("\nptr = %s",ptr);
+     printf("\nAddress of d1=%u\nAddress of ptr=%u\n",&d1[0],ptr);
+     
+    return 0;
+}
+
+
+
+strlen - string length excluding the null character.
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main() {
+    
+    char s1[20],s2[20];
+    char d1[40],d2[40];
+    char *ptr=NULL;
+    
+    scanf("%s%s",s1,s2);
+    strcpy(d1,s1);
+    printf("d1=%s",d1);
+    strcat(d1,s2);
+    printf("\nd1=%s",d1);
+    printf("\n\n");
+     
+    return 0;
+}
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    char s1[100],s2[10];
+    char Names[10][20];
+    int count=0,i;
+    char *ptr=NULL;
+    printf("\nEnter the line with delimiter\n");
+    scanf("%[^\n]s",s1);
+    ptr=strtok(s1,",");
+    count=0;
+    while(ptr!=NULL){
+        printf("\nptr=%s",ptr);
+        strcpy(Names[count],ptr);
+        count++;
+        ptr=strtok(NULL,",");
+    }
+    printf("\nNames are\n");
+    for(i=0;i<count;i++)
+      printf("\n%s",Names[i]);
+    
+    
+    /*ptr=strtok(s1,",");
+    printf("\nptr = %s",ptr);
+    ptr=strtok(NULL,",");
+    printf("\nptr = %s",ptr);
+    ptr=strtok(NULL,",");
+    printf("\nptr = %s",ptr);
+    ptr=strtok(NULL,",");
+    if(ptr == NULL)
+        printf("\nEnd of string\n");
+    else
+      printf("\nptr=%s",ptr);
+    printf("\n\n");*/
+    
+    return 0;
+}
+
+
+o/p:ishu kathik mallela,chinnu,chintu
+
+Problem:
+1.reverse a given string
+/*Problem:
+1.reverse of a string
+*/
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str1[20];
+    int i,n;
+    char temp;
+    printf("\nEnter the string: \n");
+    scanf("%s",str1);
+
+    //char *ptr=NULL;
+    n=strlen(str1);
+    for(i=0;i<n/2;i++){
+        temp=str1[i];
+        str1[i]=str1[n-i-1];
+        str1[n-i-1]=temp;
+    }
+    printf("\nReversed string is --> %s",str1);
+    return 0;
+}
+
+
+2.At given intervals reverse the string
+
+/*Reversing of a string with given intervals
+*/
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    char str1[]="ishupothala";
+    int n=strlen(str1);
+    int k=3;
+    int i;
+    rotate_k_element(str1,n,k);
+    for(i=0;i<n;i++)
+    {
+        printf("%s ",str1[i]);
+    }
+    printf("\n");
+    return 0;
+}
+void rev(char str1[],int start,int end)
+{
+    while (start<end)
+    {
+        int temp;
+        temp=str1[start];
+        str1[start]=str1[end];
+        str1[end]=temp;
+        start++;
+        end--;
+        
+    }
+}
+void rotate_k_element(char str1[],int n,int k)
+{
+    int i,end;
+    for(i=0;i<n;i=i+k)
+    {
+        end=(i+k-1<n)?(i+k-1):(n-1);
+        rev(str1,i,end);
+    }
+}
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+ user defined DT
+UDT
+
+structures - Any  minimum changes that can be adoptable 
+unions
+enums -  differnent things defining with numbers
+
+
+struct, union, enum
+
+
+struct tagName
+{
+
+    members of structure
+};
+
+ex:
+    struct square
+{
+
+    int len;
+    int brdt;
+}s1,s2,s[10]; /// these are structure variables will be like fixed
+
+// we can declare arrays in structures
+
+
+typdef struct Square SQR; // for using easily the struct square
+
+***** Using typdef we can use capitals ********************
+
+SQR s7,s8,s9
+
+Another wayto defining
+
+
+
+typdef square
+{
+
+    int len;
+    int brdt;
+}SQR1; its not a variable but its acts as a structure sqaure.
+
+
+
+accesing the elements in structures
+
+1 .  (for static variable) => nameVar.memberName
+
+SQR1 s1;
+s1.len
+
+2 ->  (when it is a pointer variable) => nameVar -> memberName
+
+SQR *ptr;
+ptr -> len;
+
+
+
+
+
+
+
+
+struct chair
+{
+  int noOflegs;
+  char brand[20];
+  char material[10];
+  char color[20];
+  float price;
+  char DOM[20];
+  char placeManu[20];
+};
+  
+int a1,a2;
+
+struct square s1,s2,s3.sq[10];
+
+
+
+
+
+
+try to make multile structures for different things in different structures
+
+####################### why structure ended with semicolon ; ################################################
+ 
+//////////////structure padding////////////////////////////////
+
+
+If we have 25 bytes size the our contents more than remain size . so here there will be a chance of structure padding
+
+-> Declare all the int types at a time and then character at last or viseversa.
+
+
+
+
+
+
+ #include <stdio.h>
+ 14 #include <string.h>
+ 15
+ 16
+ 17 struct Employee
+ 18 {
+ 19   int empID;
+ 20   char empName[20];
+ 21   char empAddress[20];
+ 22   float empSal;
+ 23   char empDesg[10];
+ 24   char Gender;
+ 25  };
+ 26
+ 27  typedef struct Employee EMP;
+ 28
+ 29     EMP e1;
+ 30
+ 31
+ 32  void get_details(EMP[],int);
+ 33  void disp_details(EMP[],int);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

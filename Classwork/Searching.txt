@@ -1,0 +1,77 @@
+Searching algorithms:
+
+
+Linear search:
+
+   searching algorithms are designed to check fpr an element or retrieve an element from any data structure 
+where it stored.
+
+->It is time consuming (O(n))
+->It can be implemented for any unsorted item.
+->it is also known as sequential search.
+
+
+Linearsearch(array,key)
+    for each item in the array
+    if (item==value)
+        return index
+
+
+Binary search:
+   
+     these binary search is used for only sorted data structures.
+More efficient than linear search.
+-> Repeatedly target the center target the center of the search structure and divide the search space in half.
+->Also known as Binary search.
+->Dividing and conquering.
+
+
+
+->In this approach, the element is always searches in the middle of a portion of a array.
+->two ways
+like Iterative method
+and Recursive method
+
+
+we need to fix low and high at each end of the list
+
+find the middle element mid of the array i.e arr[(low+high)]
+
+if x==mid, then return mid, else compare the elements to be searched  with m.
+
+If x > mid, compare x with middle elements of the right side of mid, then low=mid+1.
+
+If x < mid, compare x with middle elements of the left side of mid, then high=mid-1.
+
+
+
+Iterative method:
+----------------
+
+mid=(low+high)/2;
+if(x==arr[mid])
+   return mid;
+else if (x>arr[mid])
+     low=mid+1;
+else
+   high =mid-1;
+
+
+Recursive method:
+--------------------
+
+binarysearch(arr,x,low,high)
+  if (low > high)
+    return false
+  else
+   mid=(low+high)/2
+   if(x== arr[mid])
+      return mid;
+    else if (x > arr[mid])
+         return binarysearch(arr,x,mid+1,high);
+    else
+       return binaryserach(arr,x,low,mid-1);
+
+--> IF we use command line argument then we can pass array as pointer expression rather than array expression.
+
+

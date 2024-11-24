@@ -1,0 +1,116 @@
+                            SORTING
+
+
+->primitive data structures  -> int ,float,char,double 
+->non primitive data structures -> array,list (linear list - stack,queue),files
+
+Practical Algorithm design goals 
+try to save time(time complexity)
+try to save space (space complexity)
+
+time complexity:
+
+   T(n)= k1*(n^0)+k2+k3+k4+k5+k6
+
+       =n(0)
+       =O(1)//physical visit
+    only single step visit then O(1)
+
+  // calculate times
+s=d/t
+T=d/s;
+=250kb/20kb
+n number of times
+
+Time taken for n value will be T(n)= d/n= n'*d = O(n/2) or O(n)
+single step is repetative then O(n) or O(n/2)
+
+loop within loop then O(n^2).
+
+
+Space complexity:
+
+ the memory it needs to run to completion.
+Environment stack space
+insrtuction space
+data space
+
+
+SORTING
+----------------------------------------------------------------------------------------------------------------
+
+
+
+1. Bubble sort
+2. Insertion sort
+3. Merge sort
+4.Heap sort
+5.Quick sort
+
+space used
+stability
+
+in place Sorting Algorithms which does not require any extra space for sorting
+ex: bubble sort
+
+out place sorting:  Sorting Algorithms which requires an extra space for sorting.
+ex: merge sort
+
+Stability sort:
+If a sorting algorithm after sorting the contents does not change the sequence of similar contents in which they appear
+then this sorting is called sorting.
+
+
+
+BUBBLE SORT:
+-----------
+
+Bubble sort is also referred as sinking sort.
+
+We repeatedly compare each pair of adjacent items and swap them if they are in the wrong order.
+
+-->This will go only for one iteration
+then second iteration will go after excahnging the values.
+-->In increasing order the last element is in right position after first iteration.
+
+-->For swapping the elements we need to pass address of the array elements
+--> when input is already sorted
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+SELECTION SORT:
+---------------
+
+We repeatedly find the minimum element and move it to the sorted part of array to make unsorted part sorted.
+
+
+-->Finding the minimum element by setting minimum to 0;
+--> And exchange the minimum.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+INSERTION SORT:
+---------------
+
+- Divide the given array into two parts
+- Compare with the sorted element aech element in unsorted arrray;
+
+- Continuous inflow of data 
+
+- Check weather the element is bigger or lesser to the element then insert in sorted array respectively.
+
+
+When time is concern we can avoid insertion sort.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+MERGE SORT
+----------
+
+-> It is also known as divide amd conquer method
+-> Divide the input array in two halfs
+and we keep halfing recursively until they become very small until further no more broken of array
+
+
+write aprogram in c two merge a two arrays/lists to form sorted array.

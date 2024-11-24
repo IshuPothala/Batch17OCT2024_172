@@ -1,0 +1,836 @@
+Passing the arrays in functions. 
+
+and passing with base address of array.
+
+
+
+Recursive functions are may lead to stack overflow. ex: febonacci
+
+Nested functions are diffrent from recursive function.
+
+/* Demo on recursive function*/
+#include <stdio.h>
+int func(int);
+int main()
+{
+    int res = func(5);
+    printf("Res=%d\n\n",res);
+    return 0;
+}
+int func(int v)
+{
+    if (v == 0)
+       return 1;
+    v--;
+    func(v);
+    printf("\nValue of a function: %d\n",v);
+    return v;
+}
+
+output:
+  
+Value of a function: 0
+
+Value of a function: 1
+
+Value of a function: 2
+
+Value of a function: 3
+
+Value of a function: 4
+
+Res=4
+
+function stack frame is diffrent from recursive stack frame.
+
+---> In recursive function no multiple addresses are located
+----> After execute the recursive function, pre implemented function values get destroyed.
+----> But addresses remains as it is.
+---->By using hash mapping they maintain different addresses for the same varaiable.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             POINTERS
+
+Pointer is used to hold the address
+
+It can point to address
+
+syntax:
+   dt *ptrname;
+
+int *ptr;
+   <---------     
+
+--> pointer does not belongd to any type of datatype.
+---> It just a a special variable which holds address.
+--->read from right to left like pointer variable which is pointing to integer datatype.
+ex: int a=10;
+ float b=20.2
+
+ four types of pointer
+- null pointer
+-void pointer
+-wild pointer
+-dangling pointer
+
+void *ptr - it is void pointer and also known as generic pointer. It can point to any type of datatype.
+
+int *ptr = NULL - It become null pointer.
+
+When we declaring the pointers, we can initialize that pointer.
+
+If we don't initialize the pointers that type of pointers is known as wild pointer. It can use any part in program but it is very dangerous.
+
+Even pointer is a special variable it can have its own address.
+
+Ideally pointer address can have 4 to 8 bytes.
+
+
+ERROR:
+   warning: dereferencing 'void *' pointer
+   18 |     printf("Value stored in pointer:%d",*ptr);
+      |                                         ^~~~
+/tmp/Hgon6MlPYS.c:18:41: error: invalid use of void expression
+/tmp/Hgon6MlPYS.c:21:17: warning: dereferencing 'void *' pointer
+   21 |     printf("%d",*ptr);
+      |                 ^~~~
+/tmp/Hgon6MlPYS.c:21:17: error: invalid use of void expression
+
+
+While converting the void pointer  the integer value it gets error
+use type casting
+
+#include <stdio.h>
+
+int main() {
+    int a=10;
+    float b=20.2;
+    void *ptr = NULL;
+    printf("\nAddress of a=%u and its value =%d",&a,a);
+    printf("\nAddress of b=%u and its value =%f",&b,b);
+    printf("\nAddress of ptr=%u and its value =%u",&ptr,ptr);
+    printf("\nsize of a is %d", sizeof(a)); 
+    printf("\nsize of b is %d", sizeof(b));
+    printf("\nsize of ptr is %d", sizeof(ptr));
+    printf("\n\n");
+    
+    ptr=&a;
+    printf("\nAddress of ptr=%u" ,ptr);
+    printf("\nValue stored in pointer:%d\n",*(int*)ptr);
+    ptr=&b;
+    printf("\nAddress of ptr=%u" ,ptr);
+    printf("\nValue stored in pointer:%f\n",*(float*)ptr);
+    //printf("%d",*ptr);
+
+    
+ return 0;
+}
+
+Without using type casting means then we need to know our pointer is pointing to which datatype.
+
+#include <stdio.h>
+
+int main() {
+    int a=10;
+    float b=20.2;
+    void *ptr = NULL;
+    int *ptr1=NULL;
+    printf("\nAddress of a=%u and its value =%d",&a,a);
+    printf("\nAddress of b=%u and its value =%f",&b,b);
+    printf("\nAddress of ptr=%u and its value =%u",&ptr,ptr);
+    printf("\nsize of a is %d", sizeof(a)); 
+    printf("\nsize of b is %d", sizeof(b));
+    printf("\nsize of ptr is %d", sizeof(ptr));
+    printf("\n\n");
+    
+    ptr1=&a;
+    printf("\nAddress of ptr=%u" ,ptr);
+    printf("\n**********Value stored in pointer:%d\n",*ptr1);
+    ptr=&b;
+    printf("\nAddress of ptr=%u" ,ptr);
+    printf("\nValue stored in pointer:%f\n",*(float*)ptr);
+    //printf("%d",*ptr);
+
+    
+ return 0;
+    
+}
+
+
+----------------------------------------------------------------
+
+#include <stdio.h>
+
+int main() {
+    int a=10;
+    int *ptr = NULL;
+    printf("\n Address of ptr=%u and stored address in ptr= %u",ptr,&ptr);
+    ptr=&a;
+    printf("\n Address of ptr=%u and stored address in ptr=%u",ptr,&ptr);
+    printf("\nvalue stored at %u is %d",ptr,*ptr);
+    return 0;
+}
+
+
+
+
+#include <stdio.h>
+
+int main() {
+    int a=10;
+    int b[3]={11,12,13};
+    int *ptr = NULL;
+    printf("\n Address of ptr=%u and stored address in ptr= %u",ptr,&ptr);
+    ptr=&a;
+    printf("\n Address of ptr=%u and stored address in ptr=%u",ptr,&ptr);
+    printf("\nvalue stored at %u is %d",ptr,*ptr);
+    printf("\nBase address of b=%u",&b[0]);
+    ptr=&b[0];
+    printf("\nvalue stored at %u is %d",ptr,*ptr);
+    
+    //ARRAY NOTATION
+    printf("\nb[0]=%d",ptr[0]);
+    printf("\nb[1]=%d",ptr[1]);
+    printf("\nb[2]=%d",ptr[2]);
+    
+    //POINTER NOTATION
+    printf("\nb[0]=%d",*(ptr+0));
+    printf("\nb[1]=%d",*(ptr+1));
+    printf("\nb[2]=%d",*(ptr+2));
+    
+    
+    return 0;
+}
+
+output:
+
+Address of ptr=0 and stored address in ptr= 249577448
+Address of ptr=249577468 and stored address in ptr=249577448
+value stored at 249577468 is 10
+Base address of b=249577456
+value stored at 249577456 is 11
+b[0]=11
+b[1]=12
+b[2]=13
+b[0]=11
+b[1]=12
+b[2]=13
+
+
+/*
+Thumb rules:
+If we have &* (side by side) it will nullify each other
+op[] => *op
+*op => op[]
+*/
+#include <stdio.h>
+
+int main() {
+    int a=10;
+    int b[3]={11,12,13};
+    int i;
+    int *ptr = NULL;
+    //ptr = &b[0];
+    //ptr=&*(b+0);
+    //ptr = (b+0);
+    ptr = b;
+    for(i=0;i<3;i++)
+       printf("\n%d",*(ptr+i));
+    //*b[1]=100;
+    *(ptr+1)=100;
+    for(i=0;i<3;i++)
+       printf("\n%d",*(ptr+i));
+    
+    printf("\n\n");
+     return 0;
+}
+
+
+output:
+
+11
+12
+13
+11
+100
+13
+
+ //ptr = &b[0]; ---> Pointer is pointing to the named address
+
+If we didn't pointed to any address then it gets segmentation fault.
+
+
+------->Dynamic 
+
+
+malloc is only allocated the memory with base address
+
+malloc is failed when we allocated 0bytes
+
+malloc is passed then it returns base address.
+
+we need to free the memory or else it going to leak memeory
+
+malloc(nmemeb *size)
+int a[10];
+malloc(10*2)
+
+Return value: malloc() and calloc() functions applied for all inbuilt functions
+
+
+malloc():
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int a=10,i;
+    int *ptr=NULL;
+    ptr=&a;
+    printf("\n Value stored at ptr is %d",*ptr);
+    printf("\n Address of  ptr pointing to=%u",ptr);
+    //ptr = (int *)malloc(1*sizeof(int));
+    ptr =(int *)malloc(4000000000*100000);
+    if(ptr == NULL)
+    {
+        perror("malloc: ");
+        exit(0);
+    }
+    //ptr =(int *)malloc(4);
+    printf("\n Address of  ptr pointing to=%u",ptr);
+    //*ptr=101;
+    ptr[0]=101;
+    ptr[1]=102;
+    ptr[2]=103;
+    printf("\n Value stored at ptr is %d",*ptr);
+     printf("\n Address of  ptr pointing to=%u",&ptr[0]);
+     printf("\n Address of  ptr pointing to=%u",&ptr[1]);
+     printf("\n Address of  ptr pointing to=%u",&ptr[2]);
+    printf("\n Value stored a is %d",a);
+    printf("\n Array elements are\n");
+    for(i=0;i<3;i++)
+       printf("\n%d",ptr[i]);
+    
+    return 0;
+}
+
+output:
+
+ Value stored at ptr is 10
+malloc: : Cannot allocate memory
+ Address of  ptr pointing to=224277052
+
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int a=10,i;
+    int *ptr=NULL;
+    int *temp=NULL;
+    ptr=&a;
+    //printf("\n Value stored at ptr is %d",*ptr);
+    //printf("\n Address of  ptr pointing to=%u",ptr);
+    ptr = (int *)malloc(3*sizeof(int));
+   // ptr =(int *)malloc(4000000000*100000);
+    if(ptr == NULL)
+    {
+        perror("malloc: ");
+        exit(0);
+    }
+    temp=ptr;
+    //ptr =(int *)malloc(4);
+    printf("\n Address of  ptr pointing to=%u",ptr);
+    //*ptr=101;
+   /* ptr[0]=101;
+    ptr[1]=102;
+    ptr[2]=103;
+    
+    
+    *(ptr+0)=101;
+    *(ptr+1)=102;
+    *(ptr+2)=103;
+    */
+    for(i=0;i<3;i++)
+         printf("\n%d Address address= %u",i,&ptr[i]);
+    *ptr=101;
+    printf("\n%d is stored at %u",*ptr,ptr);
+     ptr++;
+     *ptr=102;
+     printf("\n%d is stored at %u",*ptr,ptr);
+     ptr++;
+     *ptr=103;
+     printf("\n%d is stored at %u",*ptr,ptr);
+   /* printf("\n Value stored at ptr is %d",*ptr);
+     printf("\n Address of  ptr pointing to=%u",&ptr[0]);
+     printf("\n Address of  ptr pointing to=%u",&ptr[1]);
+     printf("\n Address of  ptr pointing to=%u",&ptr[2]);
+    printf("\n Value stored a is %d",a);
+    printf("\n Array elements are\n");
+    */
+    //ptr--;
+   // ptr--;
+   // ptr=temp; 
+    for(i=0,ptr=temp;i<3;i++,ptr++)
+    {
+       printf("\n%d",*ptr);
+        //ptr++;
+    }
+    
+    
+    
+    
+    
+    
+    return 0;
+}
+
+
+Assignment:
+ To find a value or search which is present in the array.
+key = found or not found
+array should be 10 to 20 elements
+
+/*Assignment:
+ To find a value or search which is present in the array.
+key = found or not found
+array should be 10 to 20 elements*/
+#include <stdio.h>
+int search(int );
+int main()
+{ 
+    int n=10;
+    int arr[n];
+   int search(int );
+    int *ptr = NULL;
+    int res=search(5);
+    printf("\n executed");
+    return 0;
+}
+int search(int val)
+{
+    int i,n=10;
+    for(i=1;i<n;i++)
+    {
+        if(i==val)
+           printf("\n Key found");
+        else
+          printf("\n key not found");
+    }
+    
+}
+
+
+----------------------------------------------------------------------
+Dangling pointer means pointer is pointing to an address/reference where in address/reference should be destroyed
+
+storage clauses:
+->static ->used for existing the variable till end of our process.
+->extern
+->auto
+->register
+
+
+#include <stdio.h>
+int *allocMem();
+
+int main() {
+    int a=10;
+    int *ptr=NULL;
+    ptr =allocMem();
+    printf("\n%d\n",*ptr);
+
+    return 0;
+}
+int *allocMem()
+{
+    static int a=10;
+    return &a;
+}
+
+------------------------------------------------------------------------------------
+Using storage clause
+
+#include <stdio.h>
+int func();
+
+int main()
+{
+    int ret;
+    ret=func();
+    printf("\nReturn value is: %d",ret);
+    ret=func();
+    printf("\nReturn value is: %d",ret);
+    return 0;
+}
+int func()
+{
+    static int a=10;
+    a=a+2;
+    return a;
+}
+
+
+--> when normal variable stores in RAM
+but we use register before variable then it stores in CPU memory which can accessing faster than RAM memory
+--> The variables are frequently used for that variables only we use register because it was sooo costly.
+
+
+#include <stdio.h>
+int func();
+
+int main()
+{
+    register int ret;
+    ret=func();
+    printf("\nReturn value is: %d",ret);
+    ret=func();
+    printf("\nReturn value is: %d",ret);
+    /*int i;
+    for(i=0;i<100000;i++)
+        printf("%d",i);
+        i is accessing 3,00,002 times*/
+    return 0;
+}
+int func()
+{
+    static int a=10;
+    a=a+2;
+    return a;
+}
+
+
+extern keyword is like that variable should be present at some other file.
+
+#include <stdio.h>
+//#define CAP 5
+//int CAP=5;
+extern int CAP=5;
+
+int main() {
+    int arr[CAP];
+    int i;
+    for(i=0;i<CAP;i++)
+    {
+         scanf("%d",&arr[i]);
+    }
+    printf("\nList is:\n");
+    for(i=0;i<CAP;i++)
+    {
+         printf("%d ",arr[i]);
+    }
+    printf("\n\n");
+    return 0;
+}
+
+output:
+1
+2
+3
+4
+5
+
+List is:
+1 2 3 4 5 
+
+
+at sir repository
+gcc -o app p10.o config.c
+./app
+
+
+In C decorators is known as function pointers
+taking the input of one function in another function to modify the behaviour of function.
+
+ptr to fns:
+
+syntax:
+   type(*fptr)();
+calling-  (*type)();
+we also send the functions as arguments in another function
+But,type *qptr();
+
+
+
+#include <stdio.h>
+
+int add(int,int);
+int sub(int, int);
+
+int Calc(int(*)(),int,int);
+
+int main()
+{
+	int ret=Calc(add,10,20);
+	int ret1=Calc(sub,20,10);
+
+	printf("\nRet=%d\tRet1=%d\n\n",ret,ret1);
+
+	return 0;
+}
+
+int add(int v1,int v2)
+{
+	return v1+v2;
+}
+
+int sub(int v1,int v2)
+{
+	return v1-v2;
+}
+
+int Calc(int(*f)(),int v1,int v2)
+{
+	return f(v1,v2);
+}
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <string.h>
+int printchar(int, int);
+int main()
+{
+    char msg[]="welcome";
+    int i;
+    printchar('\n',1);
+    printchar('=',50);
+    printchar('\n',1);
+    printchar('=',21);
+    for(i=0;i<strlen(msg);i++)
+		printchar(msg[i],1);
+	
+	printchar('=',22);
+	printchar('\n',1);
+	printchar('=',50);
+	printchar('\n',1);
+	
+  
+    printf("\n\n");
+    return 0;
+}
+int printchar(int ch,int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+       putchar(ch);
+}
+
+
+output:
+
+==================================================
+=====================welcome======================
+==================================================
+
+/*A1. Check whether a given number can be expressed as the sum of two prime number
+
+i/p
+Enter a positive integer: 34
+Output
+34 = 3 + 31
+
+34 = 5 + 29
+34 = 11 + 23
+34 = 17 + 17
+NoofWays = 4
+
+NoofWays=-1
+*/
+#include <stdio.h>
+
+int is_prime(int number)
+{
+    int i;
+    if(number<=1)
+        return 0;
+    for(i=2;i*i <= number;i++)
+    {
+        if (number%i==0)
+          return 0;
+    }
+    return 1;
+}
+// pair of primes which can sum up
+void find_pair(int number)
+{
+    int counter=0;
+    for (int i=2;i<number;i++)
+    {
+        if(is_prime(i) && is_prime(number-i))
+        {
+            printf("%d=%d+%d\n",number,i,number-i);
+            counter++;
+        }
+    }
+    if (counter==0)
+    {
+        printf("NoofWays=-1\n");
+    }
+    else
+    {
+        printf("NoofWays=%d\n",counter);
+    }
+}
+int main()
+{
+    int number;
+    printf("Enter a positive integer: ");
+    scanf("%d", &number);
+    if (number<2)
+       printf("NoofWays=-1\n");
+    else
+      find_pair(number);
+      return 0;
+}
+
+
+
+
+
+
+#include <stdio.h>
+
+// Function to reverse the elements in the array from index start to end
+void reverse(int arr[], int start, int end) {
+    while (start < end) {
+        // Swap elements at start and end indices
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        
+        // Move towards the center
+        start++;
+        end--;
+    }
+}
+
+// Function to rotate every k-th element in the array
+void rotateEveryKthElement(int arr[], int n, int k) {
+    // Loop through the array in chunks of k elements
+    for (int i = 0; i < n; i += k) {
+        // Check if we are not out of bounds for the chunk
+        int end = (i + k - 1 < n) ? (i + k - 1) : (n - 1);
+        // Reverse the current chunk
+        reverse(arr, i, end);
+    }
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int k = 3; // Rotate every 3rd element (reverse every chunk of size 3)
+
+    printf("Original Array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    rotateEveryKthElement(arr, n, k);
+
+    printf("Array after rotating every %dth element: ", k);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+
+
+#include <stdio.h>
+
+// Function to reverse a part of the array between two indices
+void reverse(int arr[], int start, int end) {
+    while (start < end) {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+// Function to rotate every k-th element
+void rotateEveryKthElement(int arr[], int n, int k) {
+    for (int i = 0; i < n; i += k) {
+        int end = (i + k - 1 < n) ? (i + k - 1) : (n - 1);  // Make sure we stay within bounds
+        reverse(arr, i, end);
+    }
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int k = 3;  // Rotate every 3rd element
+
+    rotateEveryKthElement(arr, n, k);
+
+    // Print the rotated array
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+
+
+#include <stdio.h>
+
+int main() {
+    int n, i, j, k;
+
+    // Taking input for number of rows
+    printf("Enter the number of rows: ");
+    scanf("%d", &n);
+
+    // Outer loop for each row
+    for (i = 1; i <= n; i++) {
+        // Printing leading spaces
+        for (j = 1; j <= n - i; j++) {
+            printf(" ");
+        }
+        
+        // Printing the increasing part of the alphabet
+        for (j = 1; j <= i; j++) {
+            printf("%c", 'A' + j - 1);  // Prints characters from A to the i-th letter
+        }
+        
+        // Printing the decreasing part of the alphabet
+        for (k = i - 1; k >= 1; k--) {
+            printf("%c", 'A' + k - 1);  // Prints characters from (i-1) down to A
+        }
+
+        // Moving to the next line after each row
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

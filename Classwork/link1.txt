@@ -1,0 +1,126 @@
+ #include <stdio.h>
+  2 #include <stdlib.h>
+  3
+  4 typedef struct node
+  5 {
+  6     int val;
+  7     struct node *ptr; //Self referencial pointer (SELF/SRP)
+  8 }NODE;
+  9
+ 10 void printList(NODE *);
+ 11 NODE* appendNode(NODE *,NODE *);
+ 12 NODE *addNodeBeg(NODE *, NODE *);
+ 13
+ 14
+ 15 int main()
+ 16 {
+ 17     //creating nodes & allocated mem
+ 18     NODE h1,h2,h3,h4;
+ 19
+ 20     //ptr1 is used to navigate/travese betwn nodes
+ 21     NODE *head=NULL;
+ 22
+ 23     h4.val = 40;
+ 24     h4.ptr = NULL;
+ 25
+ 26     //head = appendNode(head,&h4);
+ 27
+ 28     //traversing the list
+ 29     printList(head);
+ 30
+ 31
+ 32     h1.val = 10;
+ 33     h1.ptr = NULL;
+ 34
+ 35     h2.val = 20;
+ 36     h2.ptr = NULL;
+ 37     h3.val = 30;
+ 38     h3.ptr = NULL;
+ 39
+ 40     /*head = appendNode(head,&h1);
+ 41
+ 42     appendNode(head,&h2);
+        appendNode(head,&h3);
+ 44     */
+ 45
+ 46     head = addNodeBeg(head,&h1);
+ 47     //traversing the list
+ 48     printList(head);
+ 49
+ 50     head = addNodeBeg(head,&h2);
+ 51     //traversing the list
+ 52     printList(head);
+ 53
+ 54
+ 55     printf("\n\n");
+ 56
+ 57     return 0;
+ 58
+ 59 }
+ 60
+ 61 void printList(NODE *head)
+ 62 {
+ 63
+ 64     if(head == NULL)
+ 65     {
+ 66         //the list is empty
+ 67         printf("\nList is Empty\n");
+ 68         return;
+ 69     }
+ 70     printf("\nlist using loops and function\n");
+ 71     while(head!= NULL)
+ 72     {
+ 73         printf("%d->",head->val);
+ 74         head = head->ptr;
+ 75     }
+ 76     printf("NULL");
+ 77 }
+ 78
+ 79 NODE *appendNode(NODE *head,NODE *nn)
+ 80 {
+ 81     printf("\nIn appendNode\n");
+ 82     NODE *temp = head;
+ 83
+ if(head == NULL)
+ 85     {
+ 86         //the list is empty
+ 87         printf("\nList is Empty\n");
+ 88         head = nn;
+ 89         temp = nn;
+ 90     }
+ 91     else
+ 92     {
+ 93         printf("\nList is not empty\n");
+ 94         while(head->ptr!= NULL)
+ 95         {
+ 96             printf("%d->",head->val);
+ 97             head = head->ptr;
+ 98         }
+ 99
+100         head->ptr = nn; //adding node to the end of the list
+101     }
+102     head = temp; //head is again pointed to the BA
+103
+104     return head;
+105 }
+106
+107
+108 NODE *addNodeBeg(NODE *head, NODE *nn)
+109 {
+110     NODE *temp = head;
+111     printf("\nIn addNodeBeg\n");
+112     if(head == NULL)
+113     {
+114         //the list is empty
+115         printf("\nList is Empty\n");
+116         head = nn;
+117         temp = nn;
+118     }
+119     else
+120     {
+121         nn->ptr = head;
+122         head = nn;     // making the head point to the nn(BA of new list)
+123     }
+124     return head; //return the BA of the list
+125 }
+                                         

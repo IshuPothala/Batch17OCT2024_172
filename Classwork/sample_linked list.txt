@@ -1,0 +1,101 @@
+include <stdio.h>
+  2 #include <stdlib.h>
+  3
+  4 typedef struct node
+  5 {
+  6     int val;
+  7     struct node *ptr; //Self referencial pointer (SELF/SRP)
+  8 }NODE;
+  9
+ 10
+ 11 int main()
+ 12 {
+ 13     //creating nodes & allocated mem
+ 14     NODE h1,h2,h3,h4;
+ 15
+ 16     //ptr1 is used to navigate/travese betwn nodes
+ 17     NODE *ptr1=NULL;
+ 18
+ 19     //initialze values to each node
+ 20
+ 21     h1.val = 10;
+ 22     h1.ptr = NULL;
+ 23
+ 24     h2.val = 20;
+ 25     h2.ptr = NULL;
+ 26
+ 27     h3.val = 30;
+ 28     h3.ptr = NULL;
+ 29
+ 30
+ 31     printf("\nAddress of h1=%p",&h1);
+ 32     printf("\nAddress of h2=%p",&h2);
+ 33     printf("\nAddress of h3=%p",&h3);
+ 34     printf("\nAddress of ptr1=%p",&ptr1);
+ 35
+ 36
+ 37     printf("\nh1.value=%d and ptr=%p",h1.val,h1.ptr);
+ 38     printf("\nh2.value=%d and ptr=%p",h2.val,h2.ptr);
+ 39     printf("\nh3.value=%d and ptr=%p",h3.val,h3.ptr);
+ 40
+ 41     printf("\ncontents of ptr1/ptr1 is pointing to: %p",ptr1);
+ 42      //Making relationship (travese)/creating LList
+ 45
+ 46     h1.ptr = &h2;
+ 47     h2.ptr = &h3;
+ 48
+ 49     //travese
+ 50
+ 51     ptr1 = &h1; //ptr1 pointing to BA of list (first rec)
+ 52
+ 53     printf("\n%d",h1.val);
+ 54     printf("\n%d",ptr1->val);
+ 55
+ 56     //ptr1 = &h2;
+ 57     ptr1 = h1.ptr; //=>ptr1 is pointing to h2
+ 58     printf("\n%d",ptr1->val);
+ 59
+ 60     //ptr1 = &h3;
+ 61     ptr1 = h2.ptr; // from earlier line 57
+ 62     printf("\n%d",ptr1->val);
+ 63
+ 64     //create new node and init with values
+ 65     h4.val=40;
+ 66     h4.ptr = NULL;
+ 67
+ 68     //inserting new node h4 betwn h1 and h2
+ 69     h1.ptr = &h4;
+ 70     h4.ptr = &h2;
+ 71
+ 72     //again ptr1 is pointing to BA of list
+ 73     ptr1 = &h1;
+ 74     printf("\nNew list is\n");
+ 75     printf("\n%d->",ptr1->val);
+ 76
+ 77     ptr1 = h1.ptr;
+ 78     printf("%d->",ptr1->val);
+ 79
+ 80     ptr1 = h4.ptr;
+ 81     printf("%d->",ptr1->val);
+ 82
+ 83     ptr1 = h2.ptr;
+ 84       printf("%d->",ptr1->val);
+ 85
+ 86     ptr1 = h3.ptr;
+ 87     if(ptr1 == NULL)
+ 88         printf("NULL");
+ 89     else
+ 90         printf("\n%d;",ptr1->val);
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96     printf("\n\n");
+ 97
+ 98     return 0;
+ 99
+100 }
+
+
+-------->     use singular linked list in employee records use appendnde     

@@ -1,0 +1,21 @@
+IMPORTANCE OF C
+
+It is a robust language whose rich set of builtin functons
+C compilers combine an assembly language
+It is suitable for system software & business packages
+ex: date, cal ---> sys software
+ex: excel, notepad ---> business packages
+C language is well suited for structured programming, thus requiring user to think of a problem in terms of function modules and blocks
+programs written in c is much faster and efficient
+Highly portable
+
+###Basic structure
+
+Document 
+link section
+defiiintion sec
+global declaration sec
+function section
+main()
+{
+declaration part

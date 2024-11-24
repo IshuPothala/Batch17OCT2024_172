@@ -1,0 +1,138 @@
+Else-if ladder:
+
+syntax:
+
+if(cond1)
+{
+
+}
+else if(cond2)
+{
+
+}
+else if(cond3)
+{
+
+}
+else
+{
+
+}
+
+ex: for timetable
+
+from 9 - 11 (powerskill session)
+     11-11:15 (break)
+     11:15 - 1 (technical session)
+     1 - 2 (break)
+     2-4:30 (ts)
+     4:30 - 4:45 (break)
+     4:45 - 6 (ts)
+
+ex: color code  of resistor
+else if can take lots of time to execute, because all the conditions need to execute untill the condition meant.
+
+---> for string we can use else if ladder
+---> for single character we use switch case
+
+
+SWITCH CASE:
+
+sybtax:
+
+switch(cond)
+{
+
+   case 1:
+      ---
+      ----
+   break;
+   
+   case 2:
+     ----
+   break;
+
+  default;
+      
+  ----
+    break;
+}
+
+
+case values are numeric or single character constants (ascii values)
+
+Process exited normally ---> when execute the switch program with debug
+
+switch(clrcode=getc(stdin))
+
+same as  switch(getc(stdin))
+
+----> if we have any duplicate test cases we get compilation error.Even with same values of numeric and or single character constants.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+                                                         LOOPING
+
+
+1. Initialize variable
+
+2. Condition check ---> used to continue the application
+
+3. Statements to be executed (it may optional)
+
+4. Counter
+
+
+-> do while
+-> while
+-> for
+
+two types of loop
+1. entry controlled --> check the condition first and then execute
+2. exit controlled  --> for the first time only it executes the statements and  check the condition lasts
+ 
+ do while loop syntax:
+
+ do{
+   
+     stmts
+
+ }while(cond);
+
+?????????????????????  why there is a semicolon end of the do while ?????????????????????????????????????
+
+while loop syntax:
+
+while(cond)
+{
+
+ sts
+
+}
+---> if scanf was scanned properly error handling needs to do
+
+
+for loop:
+
+sytax:
+
+for(initialize section;cond section;counter)
+{
+
+   sts;
+
+}
+// initial section we can use one or more variable, we can have more than one counters and same for conditions
+ex: for(i=0,j=0;(i<10)&&(j<10);i++,j++)
+
+--> we can use one or more ommit
+ex:i=0,j=0;
+for (;;)
+{
+  sts;
+  if ((i>10) && (j>10))
+  i++;
+  j++;
+}
+
+

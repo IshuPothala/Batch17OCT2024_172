@@ -1,0 +1,204 @@
+#Convert the for loop which is entry controlled changes to exit controll.
+
+                                                              ARRAYS
+
+To do the particular tasks like one datatype is meant for particular purpose
+
+[] - this is derivative basic datatype called array.
+   - It is homogeneous datatype of elements.
+   - Arrays are stored in consecutive/continuous memory management.
+
+Declaration of array:
+
+  dt arrname[CAP/size];
+
+  int array1[20];
+ 
+All these 10 elements for only one purpose
+
+float arr[10];
+
+//
+struct emp
+{
+  int id;
+   char name[30];
+];
+
+struct emp e[10];
+//
+
+Access elements of arr to store or evaluate
+
+Arrname[indexvalue] = value;
+
+-> array index value starts from 0 to size-1
+
+arr[2]=20;
+
+
+int a=10;
+int b[2]={1,2};
+int c=20;                      ----> low address 
+pf ("%d %d",b[0],b[1]);
+pf ("%d %d", b[2],b[-1]);
+
+
+c=>2000 ->20
+b[0]=>2002->1
+b[1]=>2004 ->2
+a=>2006 => 10
+
+Formula:
+
+Base address+(Indexvalue*sizeofdtatatype)
+
+--> index values only int types not float.
+
+Types of arrays:
+
+->static array
+-> dynamic array
+-> stretchable array
+-> mutable array
+
+*******column size is mandatory, we can omit row***************************
+1.static arry:
+    --> size of array is known before to the compilation time.
+         ex:  int arr[5];
+                      ^
+                      |  
+                  declared before compilation
+->memory allocated by stack memory
+
+2. dynamic array:
+    --> Size of the array is allocated/known at run time
+-> memory allocated by using malloc, calloc, realloc
+-> assigned in stdlib.h
+-> Used for increasing size
+
+3. Stretchable array:
+
+--> It just like dynamic array
+--> Size of the array is increased or decreased depending on the need.
+achieved by using same malloc,calloc,realloc
+
+4. Mutable array:
+
+--> size of the array is known or allocated at the time of linking and before execution
+ex: when array is one file and declared in another file when link time size it gets allocated
+
+
+-----------------------write a program to store odd numbers in an array between m and n-----------------------------------------------------------
+
+
+two dimensional array:
+
+dt arrname[row][col];
+
+int a[2][3] = {{1,2,3},{4,5,6}};
+
+int a1[2][3] = {1,2,3,4,5,6};
+
+1 2 3
+4 5 6
+
+2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011
+     1        2         3         4         5         6
+
+ a[0][0]    a[0][1]   a[0][2]   a[1][0]  a[1][1]     a[1][2]
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+#define row 2
+#define col 3
+
+int main() {
+   int a1[row][col] = {{1,2,3},{4,5,6}};
+   int a2[row][col] = {1,2,3,4,5,6};
+   int riv,civ;
+   printf("\n%d",a2[0][2]);
+   for(riv=0;riv<row;riv++)
+   {
+       for(civ=0;civ<col;civ++)
+         scanf("%d",&a2[riv][civ]);
+   }
+   for(riv=0;riv<row;riv++)
+   {
+       for(civ=0;civ<col;civ++)
+         printf("%d",a2[riv][civ]);
+         printf("\n");
+   }
+   return 0;
+}
+
+int a[2][3];
+
+for(i=0;i<2;i++)
+  for(j=0;j<3;j++)
+    scanf("%d",&a[i][j];
+
+
+
+
+
+
+
+
+
+
+
+------------------------->matrix multiplication exercise--------------------------------
+
+
+#### statement: reversing of an array ####
+
+Array rules:
+
+
+a[a[x]] like a[a[2]]
+
+
+
+                  Functions
+
+1. std lib functions
+
+          printf,sqrt,abs,pow
+
+2. user defined
+      user is defining his/her own task to be performed.
+
+syntax:
+
+returndt fName(input args)
+{
+
+  sts;
+return rdt;
+
+}
+
+->Function name starts with small case or _
+the returning datatype is like as function_name datatype
+------------------------------------------------------------------------------------------------------------------------------------
+
+1. function prototype are to be declared in header files
+  
+   int add(int,int);
+
+declaration is in .c file
+
+
+
+
+
+
+
+
+
+
+
+
+

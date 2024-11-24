@@ -1,0 +1,179 @@
+                               CHAPTER - 4
+
+                   MANAGING INPUT OUTPUT OPERATIONS
+ 
+Input / Output sattemens
+Two types of io statements
+-> formatted io statements - user to specify the type of data and the way in which should be read in or written out.
+   ex: scanf(), printf()
+->unformatted io statements - it will all act on characters
+ex: getchar(),gets(),putchar(),puts(),etc
+
+scanf() :
+syntax:
+scanf("control string", address_list);
+address list provides the address of memory locations where the values of input variable should be stored.
+
+character group                  meaning
+%u                                read an unsigned value
+%d
+%f
+%c
+
+& - address where we need to store
+Integer input:
+num=12345
+scanf("%3d",&num);    ### only 3 digits can scanned remain digits in buffer #####
+
+printf format:
+n=567899033
+printf("%05d",n);
+### 0 is used to fill the remaining bits ###
+In printf we are deferencing the address
+
+----> gcc p1.c   | for compiling the code
+----> ./a.out     |
+
+fflush is used to free the temporary buffers
+fflush is not work in linux environment
+
+single charcter can scanned by using ascii value
+
+but for float we use scan function like scanf(" "), then it checks the scanf("enter") with the temporary buffer
+then it gives the temporary buffer value
+
+###########assignment - how can we avoid with nujeric constants ##########
+Scan employee records with folloeing
+id, name,gender,address,ph no, salary, designation
+
+print the below format
+SlNo | ID  |  NAME | GENDER | ADDRESS | PHNO | SALARY | DESIG
+
+printf("\n%-4s\t|
+
+space or new line character (enter) acts as end of string or character
+
+
+Error when the string name and its buffer in temp
+stack size exceeded
+
+|||||||||||||||||this is a c programming class, i am here to attend the c programming classes, ishu pothala here
+
+Name: this is a c programming class, i am here to attend the c programming classes, ishu pothala herecome on lets enjoy
+
+Temp: come
+
+*** stack smashing detected ***: <unknown> terminated
+Aborted (core dumped)|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Sol:  To clear the unreserved space we didn't have permission for executable one.
+
+Address of the variables
+
+Address of i: 1440203472
+Address of f: 1440203476
+Address of ch: 1440203471
+Address of str: 1440203488
+Address of d: 1440203480
+
+These are the base address of the variable or where the address is stored at initial
+
+we don't give spaces in scanf format specifiers
+
+--> Convert integer to string by using buffer value ( sprintf buff )
+---> we can convert string to integer by using (atoi)
+
+/*
+unformatted i/o
+getc,putc => read/write single char ->stream
+
+getchar,putchar => read/write single char -> std i/o
+
+gets,puts => read/write for a string -> stream
+
+getch() => DOS platform => not echo read char to the screen
+
+*/
+
+/* getc, fgetc */
+ getc --> file stream
+  fgetc --> file stream
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                    CHAPTER 5
+
+                                          DECISION MAKING AND BRANCHING
+
+Branching is used to check different conditions
+
+if (cond)
+{
+     if block statements
+}
+
+If only one statement we don't need to use { }
+** boolean is not a datatype in c**
+
+
+
+#include <stdio.h>
+   int main()
+  
+   {
+  
+      int age;
+      scanf("%d",&age);
+  
+      if (age >= 18)
+     {
+       printf("\nEligible to vote");
+     }
+     else
+     {
+       printf("\nyou are not eligible to vote");
+     }
+ 
+     printf("\nI'm an indian citizen\n");
+     return 0;
+
+
+Nested if -else:
+
+basic if -else:
+
+if(cond1)              
+{
+   if(cond2)
+   {
+  
+   }
+   else
+   {
+ 
+   }
+}  
+else
+{
+   if (cond3) 
+   {
+
+   }
+   else
+   {
+
+   }
+
+}
+
+---> Using the nested if-else statement check the greatest among five numbers <---
+
+
+
+
+
+
+
+
+
+

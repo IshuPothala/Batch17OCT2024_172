@@ -1,0 +1,111 @@
+
+#include <stdio.h>
+  2 #include <stdlib.h>
+  3
+  4 #define CAP 5
+  5
+  6 int top, bottom;
+  7
+  8 int push(int [], int);
+  9 void dispStack(int []);
+ 10 void pop();
+ 11
+ 12 int main()
+ 13 {
+ 14
+ 15
+ 16   int arr[CAP];
+ 17  // arr= (int *)malloc(CAP *(sizeof(int)));
+ 18     //int arr[CAP];
+ 19     int ch=1, ele;
+ 20     top = 0;
+ 21     bottom = 0;
+ 22
+ 23     while(ch)
+ 24     {
+ 25         printf("\n\tEnter the Value to be insert in stack: ");
+ 26         scanf("%d",&ele);
+ 27
+ 28         push(arr, ele);
+ 29
+ 30         printf("\nDo you want to add/insert new element to the stack (0/1): ");
+ 31         scanf("%d",&ch);
+ 32     }
+ 33
+ 34     dispStack(arr);
+ 35
+ 36     pop(arr);
+ 37     dispStack(arr);
+ 38     pop(arr);
+ 39     dispStack(arr);
+ 40     pop(arr);
+ 41     dispStack(arr);
+ 42     pop(arr);
+ 43     dispStack(arr);
+pop(arr);
+ 45     dispStack(arr);
+ 46
+ 47     printf("\n\n");
+ 48     return 0;
+ 49 }
+ 50
+ 51 int push(int stackArr[], int ele)
+ 52 {
+ 53     if(top > (CAP-1))
+ 54     {
+ 55         printf("\n\tStack is full\n");
+ 56         return 0;
+ 57     }
+ 58     stackArr[top] = ele;
+ 59     top++;
+ 60     return 1;
+ 61 }
+ 62
+ 63
+ 64 void pop(int a[])
+ 65 {
+ 66     if(top == bottom)
+ 67     {
+ 68         printf("\n\tStack is Empty\n");
+ 69         return ;
+ 70     }
+ 71     else
+ 72     {
+ 73         printf("\n\t%d element is popped out successfully",a[top-1]);
+ 74         top--;
+ 75     }
+ 76 }
+ 77
+ 78 void dispStack(int stackArr[])
+ 79 {
+ 80     int i;
+ 81     if(top == bottom)
+ 82     {
+ 83         printf("\n\tStack is Empty\n");
+ 84         return ;
+ 85     }
+                                         
+ printf("\n\tELements in the stack are\n");
+ 87     printf("\t\t");
+ 88     for(i=top-1;i>=0;i--)
+ 89         printf("%d ",stackArr[i]);
+ 90
+ 91     printf("\n\n");
+ 92 }
+                     
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+#define MAX 5
+
+typedef struct Node
+{
+   int val;
+   struct Node *next;
+}NODE;
+
+NODE *head=NULL;
+int bottom =-1;
+int top = -1;

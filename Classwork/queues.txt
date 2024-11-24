@@ -1,0 +1,9 @@
+                                       QUEUES
+
+      Queue is flowed like one direction
+
+one side input and another side we get output
+
+Create the employee records dynamically display it using stack operations
+
+linked list along with push and pop operations

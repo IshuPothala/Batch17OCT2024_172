@@ -1,0 +1,215 @@
+MULTITHREADING
+
+**************************************************************************** Improved ******************************************************************************
+
+process - execution of a program
+
+Multiple things we are running at a time - so called as parallelly running
+
+background processors - by using &
+
+command prompt  |   different applications can have link with command prompt  by using threads. These are called as LWT (light weighted threads/process).
+
+Concurrency refers to the abitkity of a system to perform multiple tasks simultaneously like different functions or operations within overlapping time frames.
+
+It allows an application to manage numerous tasks
+
+Benifits:
+
+-> Responsiveness
+
+Concurrency allows applications to remain responsive to user actions even when performing long-running tasks in the background.
+ex: webserver can handle multiple clienrs
+
+->Utilizing Multi-core processors
+One cpu-> one instructions
+four cpu's -> four instructions at a time.
+
+->Efficient usage of resource utilization.
+
+->Scalability -> It should handle efficiently and effectively.
+
+-> Improved Throughput
+IF cpu fetch the value and give to i/o bus and give to process
+
+
+
+
+CONCURRENCY IN PROGRAMMING:
+
+-> Multithreading: MUltiple threads within in single process.
+
+Threads share the samememory,space which allows for efficient communication but careful syncronization to prevent race conditions.
+
+If we acting on the same space avoid race conditions
+
+-> ex:Bank amount deposit, withdraw.
+
+
+->Multiprocessing: Separate processes are created to handle different tasks cocurrently. Independent to each other , parent and child processes like parent using
+add and child using sub application. These are separate entities.
+
+Each process has its own memory space, which is safer but requires inter-process communication(IPC) methods like pipes or shared memory for collaboration.
+
+These process cannot do interaction.
+ex: KHO-KHO 
+
+-> Asynchronous programming - Non-blocking are used to handle tasks such as i/o opeartions without blocking the main thread, allowing other operations concurrently.
+
+
+CONCURRENCY vs Parallelism
+
+-> Concurrency is about dealing with multiple tasks at once or having multiple tasks in progress.
+
+parallelism is about executing multiple taslk truly simultaneosly , typically achieved by having multiple CPU cores.
+
+Multithreading using posix threads.
+
+using fork() for multiprocessing.
+
+Asynchronous i/o
+Atomic operations : enables- safe operations without full mutex overhead.
+
+Semaphores -> control access to sharred reources by multiple threads.
+
+Message Queues -> Allows asynchronous message passing between processes.
+
+------------------------------------------------------------------------------------------------------------
+Multithreading using POSIX operations
+including library - #include <pthread.h>
+
+concept of thread:
+      each thread has its own stack,registers, program counter.
+THread is a smallest unit of execution within a process.
+
+
+Tradition view of  aprocess:
+
+process= process contest + code,data, and stack.
+
+program counter read/write at one  at a time.
+
+process = thread +code ,dtaa and kernel context
+
+
+A process with multiple threads
+
+ex: add,sub,mul,div --> attch each thread to these different functions
+
+Each thread has its own thread id.
+
+
+
+
+
+Threads vs Process:
+
+-> each has its own logical control flow.
+-> Each run concurrently.
+-> Each is context switches
+
+
+
+->Thraeds share code ,data,process do not.
+
+Threads are somewhat less expensive than responses.
+
+Process control is twice expensive than threads.
+
+
+
+
+POSIX threads:
+->creating thraed ->  pthread_create, pthread_join- wait untill the thread is completed
+->Determining thraed id -> pthread_self 
+->terminating threads -> pthread_cancel, pthread_exit
+exit[],return[] -> these are sysytem calls
+-> Synchronization access to shared variables -> pthread_mutex_init, pthread_mutex_[un]lock
+                                              -> pthread_cond_init, pthread_cond_[timed]wait
+ 
+Program:
+
+
+
+
+on success it return o ; on error it returns an error number
+
+
+errors :EAGAIN,EINVAL,EPERM
+
+
+gcc th1.c -lpthread
+
+use join pthread to wait the main until the function came to end and join with the thread.
+
+even we can use sleep(). sleep in <unistd.h> files
+
+----------------------------------------------------------------------------------------------------------------------
+ex:    main()
+
+
+ {
+      int a-10;
+int arr[2]={1,2};
+
+func(&a);
+func2();
+
+}
+func(int *)
+{
+     a+=3;
+}
+
+func2(int a[])
+{
+   a[0]=20;
+    a[1]=200;
+}
+
+func3(int **b)
+{
+
+
+because the variable arguments is of int star for changing we can type cast to (void *)
+
+
+
+---> IF we pass the structure to the threads first make the strcture as void * and catch it it employee and reassign back to the function variables.
+
+
+--->Through the threads we are calling the structure.
+
+----> If we are doing the linear search by using threads it makes reduce time complexity.
+
+
+
+-> mutex will used only threads causing race conditions
+-> If threads are using same shared resources then only we use this mutex lock.
+
+properties of mutex
+->init
+->lock
+->unlock
+->destroy
+->detach
+
+why we destroy the lock after using?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
